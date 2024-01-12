@@ -101,6 +101,7 @@ public class WifiWizard2 extends CordovaPlugin {
     private static final String SWITCH_TO_LOCATION_SETTINGS = "switchToLocationSettings";
     private static final String SPECIFIER_NETWORK = "specifierConnection"; //>=29
     private static final String SUGGEST_NETWORK = "suggestConnection"; //>=29
+    private static final String RESET_BIND_ALL = "resetBindAll";
 
     private static final int SCAN_RESULTS_CODE = 0; // Permissions request code for getScanResults()
     private static final int SCAN_CODE = 1; // Permissions request code for scan()
@@ -187,6 +188,10 @@ public class WifiWizard2 extends CordovaPlugin {
             return true;
         } else if (action.equals(REQUEST_FINE_LOCATION)) {
             this.requestLocationPermission(LOCATION_REQUEST_CODE);
+            return true;
+
+        } else if (action.equals(RESET_BIND_ALL)) {
+                this.resetBindAll(callbackContext);
             return true;
         } else if (action.equals(GET_WIFI_ROUTER_IP_ADDRESS)) {
 
@@ -1738,10 +1743,11 @@ public class WifiWizard2 extends CordovaPlugin {
 
         Log.d(TAG, "maybeResetBindALL");
 
+        Log.d(TAG, "desired" + (desired != null) + " | " + desired);
         // desired should have a value if receiver is registered
-        if (desired != null) {
 
             if (API_VERSION > 21) {
+                Log.d(TAG, "API_VERSION > 21");
 
                 try {
                     // Unregister net changed receiver -- should only be registered in API versions > 21
@@ -1753,12 +1759,15 @@ public class WifiWizard2 extends CordovaPlugin {
 
             // Lollipop OS or newer
             if (API_VERSION >= 23) {
+                Log.d(TAG, "API_VERSION > 23");
                 connectivityManager.bindProcessToNetwork(null);
             } else if (API_VERSION >= 21 && API_VERSION < 23) {
+                Log.d(TAG, "API_VERSION >= 21 && API_VERSION < 23");
                 connectivityManager.setProcessDefaultNetwork(null);
             }
 
             if (API_VERSION > 21 && networkCallback != null) {
+                Log.d(TAG, "API_VERSION > 21 && networkCallback != null");
 
                 try {
                     // Same behavior as releaseNetworkRequest
@@ -1767,11 +1776,11 @@ public class WifiWizard2 extends CordovaPlugin {
                 }
             }
 
+        Log.d(TAG, "END");
             networkCallback = null;
             previous = null;
             desired = null;
 
-        }
 
     }
 
@@ -1782,7 +1791,7 @@ public class WifiWizard2 extends CordovaPlugin {
      */
     private void resetBindAll(CallbackContext callbackContext) {
         Log.d(TAG, "WifiWizard2: resetBindALL");
-
+        
         try {
             maybeResetBindALL();
             callbackContext.success("Successfully reset BindALL");
@@ -1790,6 +1799,7 @@ public class WifiWizard2 extends CordovaPlugin {
             Log.e(TAG, "InterruptedException error.", e);
             callbackContext.error("ERROR_NO_BIND_ALL");
         }
+         
     }
 
     /**
@@ -1984,7 +1994,7 @@ public class WifiWizard2 extends CordovaPlugin {
 
     /**
      *  Specifier one network to connect wifi providing ssid and password
-     *  This function only provides internet to app and not to the rest of the system 
+     *  This function only provides internet to app and not to the rest of the system
      *  Author: Anthony Sychev (hello at dm211 dot com)
      *  Edited by: Mathias Scavello (info at mathiasscavello dot com)
      *
@@ -2133,7 +2143,7 @@ public class WifiWizard2 extends CordovaPlugin {
                 return;
             }
             callbackContext.success("STATUS_NETWORK_SUGGESTIONS_ADDED");
-            
+
             //TODO: check when device is connected
 
         } catch (Exception e) {
