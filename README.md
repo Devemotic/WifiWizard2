@@ -31,19 +31,7 @@
 
 WifiWizard2 enables Wifi management for both Android and iOS applications within Cordova/Phonegap projects.
 
-This project is a fork of the [WifiWizard](https://github.com/hoerresb/WifiWizard) plugin with fixes and updates, as well as patches taken from the [Cordova Network Manager](https://github.com/arsenal942/Cordova-Network-Manager) plugin.
-
-Version 3.0.0+ has undergone a TON of changes from the original fork (version 2.0), and the majority of method/functions have been changed. You can find the latest release of version 2 on the [2.1.x branch](https://github.com/tripflex/WifiWizard2/tree/2.1.x)
-
-The recommended version to use is the latest 3+ as that is the version that is actively maintained.
-
-_iOS has limited functionality as Apple's WifiManager equivalent is only available as a private API. Any app that used these features would not be allowed on the app store._
-
-**If you are an iOS developer, please consider helping us to resolve the [open iOS issues](https://github.com/tripflex/WifiWizard2/issues/6)**
-
-**If you are an Android developer, please consider helping us to [refactor the current code base](https://github.com/tripflex/WifiWizard2/issues/28)**
-
-**If you're a Cordova developer, please consider helping out this project, open a new issue, a PR, or contact me directly**
+This project is a fork of the [WifiWizard](https://github.com/matscav/WifiWizard2) plugin to expose a fixed version of the latest feats.
 
 # Basics
 
