@@ -1,38 +1,37 @@
 {
-  "name": "emotic-cordova-plugin-wifiwizard2",
-  "version": "3.3.0",
-  "cordova": {
-    "id": "emotic-cordova-plugin-wifiwizard2",
-    "platforms": [
-      "android",
-      "ios"
-    ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/devemotic/wifiwizard2.git"
-  },
-  "author": "emotic",
-  "license": "Apache 2.0",
-  "description": "Cordova WiFi Manager for Android and iOS",
-  ,
-  "engines": {
-    "cordovaDependencies": {
-      "3.0.0": {
-        "cordova-android": ">=5.0.0"
-      }
+    "name": "emotic-cordova-plugin-wifiwizard2",
+    "version": "3.3.0",
+    "cordova": {
+        "id": "emotic-cordova-plugin-wifiwizard2",
+        "platforms": [
+            "android",
+            "ios"
+        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/devemotic/wifiwizard2.git"
+    },
+    "author": "emotic",
+    "license": "Apache 2.0",
+    "description": "Cordova WiFi Manager for Android and iOS",
+    "engines": {
+        "cordovaDependencies": {
+            "3.0.0": {
+                "cordova-android": ">=5.0.0"
+            }
+        }
+    },
+    "homepage": "https://github.com/devemotic/wifiwizard2#readme",
+    "keywords": [
+        "ecosystem:cordova",
+        "cordova-android",
+        "cordova-ios",
+        "emotic"
+    ],
+    "devDependencies": {
+        "babel-polyfill": "^6.26.0",
+        "babel-preset-env": "^1.6.1",
+        "cordova": "^5.0.0"
     }
-  },
-  "homepage": "https://github.com/devemotic/wifiwizard2#readme",
-  "keywords": [
-    "ecosystem:cordova",
-    "cordova-android",
-    "cordova-ios",
-    "emotic"
-  ],
-  "devDependencies": {
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "cordova": "^5.0.0"
-  }
 }
